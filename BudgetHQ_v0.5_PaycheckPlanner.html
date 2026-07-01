@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BudgetHQ v0.5 - Paycheck Planner</title>
+<style>
+:root{--bg:#0b1220;--card:#172033;--text:#f8fafc;--muted:#9ca3af;--accent:#60a5fa;--good:#22c55e}
+body{margin:0;font-family:-apple-system,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{padding:18px;background:#111827}
+.page{padding:16px 16px 90px}
+.card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:16px}
+.small{color:var(--muted);font-size:.9rem}
+.money{font-size:2rem;font-weight:700}
+.progress{height:12px;background:#334155;border-radius:99px;overflow:hidden;margin-top:8px}
+.fill{height:100%;background:var(--good)}
+.item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #2b3b55}
+.item:last-child{border:none}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#111827}
+nav button{flex:1;background:none;border:none;color:#9ca3af;padding:14px}
+nav button.active{color:white}
+.tab{display:none}.tab.active{display:block}
+.badge{background:#1d4ed8;padding:4px 8px;border-radius:999px;font-size:.8rem}
+</style>
+</head>
+<body>
+<header>
+<div class="small">Good Morning, Cody 👋</div>
+<h2 style="margin:.2rem 0">BudgetHQ</h2>
+</header>
+
+<div id="home" class="tab active page">
+<div class="card">
+<div class="small">Available Monthly Surplus</div>
+<div class="money">$663</div>
+<div class="badge">On Track</div>
+</div>
+
+<div class="card">
+<h3>Today's Focus</h3>
+<div>💰 Build Emergency Fund</div>
+<div class="small">Catch up the past-due accounts with your July bonus, then keep saving.</div>
+</div>
+</div>
+
+<div id="planner" class="tab page">
+
+<div class="card">
+<h3>💵 Cody • End-of-Month Paycheck</h3>
+<div class="money">$2,043</div>
+
+<div class="item"><span>🚗 Santa Fe</span><strong>$1,050</strong></div>
+<div class="item"><span>🏡 Lot Rent</span><strong>$864</strong></div>
+<div class="item"><span>🌐 Internet</span><strong>$130</strong></div>
+
+<div class="progress"><div class="fill" style="width:100%"></div></div>
+<div class="small">Allocated: $2,044 &nbsp; • &nbsp; Remaining: <strong>-$1</strong></div>
+</div>
+
+<div class="card">
+<h3>💵 Candace • Paycheck (Estimate)</h3>
+<div class="money">$1,250</div>
+
+<div class="item"><span>🏠 Mortgage</span><strong>$1,052</strong></div>
+<div class="item"><span>🚙 Insurance</span><strong>$200</strong></div>
+
+<div class="progress"><div class="fill" style="width:100%"></div></div>
+<div class="small">Remaining: <strong>-$2</strong> (covered across household cash flow)</div>
+</div>
+
+<div class="card">
+<h3>🎁 Bonus Planner</h3>
+<div class="money">$2,000</div>
+
+<div class="item"><span>Past Due Accounts</span><strong>$660</strong></div>
+<div class="item"><span>Vacation</span><strong>$416</strong></div>
+<div class="item"><span>Emergency Fund</span><strong>$924</strong></div>
+</div>
+
+</div>
+
+<div id="goals" class="tab page">
+<div class="card">
+<h3>Goals</h3>
+<label><input type="checkbox" checked> Move Santa Fe to the 3rd ✅</label><br><br>
+<label><input type="checkbox"> Catch up Best Buy</label><br><br>
+<label><input type="checkbox"> Catch up Home Depot</label><br><br>
+<label><input type="checkbox"> Build $3,000 Emergency Fund</label>
+</div>
+</div>
+
+<nav>
+<button class="active" data-tab="home">🏠</button>
+<button data-tab="planner">💵</button>
+<button data-tab="goals">🎯</button>
+</nav>
+
+<script>
+document.querySelectorAll("nav button").forEach(btn=>{
+ btn.onclick=()=>{
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById(btn.dataset.tab).classList.add("active");
+ };
+});
+</script>
+</body>
+</html>
